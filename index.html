@@ -4,167 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Nyonya Kitchen</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #FFF7E8; /* Coconut cream */
-            color: #1A1A1A; /* Charcoal */
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(135deg, #8B0000, #E63946, #F4A300);
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin: 0;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-top: 10px;
-            opacity: 0.95;
-        }
-
-        .hero button {
-            margin-top: 25px;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background: linear-gradient(135deg, #E63946, #F4A300);
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
-
-        .hero button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        /* SECTION HEADERS */
-        h2 {
-            text-align: center;
-            margin-top: 60px;
-            font-size: 2.2rem;
-            color: #E63946;
-        }
-
-        /* MENU SECTION */
-        .menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            padding: 40px;
-        }
-
-        .menu-item {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            border-left: 6px solid #E63946;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: 0.3s;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-        }
-
-        .menu-item h3 {
-            margin: 0;
-            color: #E63946;
-        }
-
-        .menu-item p {
-            margin-top: 8px;
-            color: #333;
-        }
-
-        /* GALLERY */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            padding: 40px;
-        }
-
-        .gallery div {
-            height: 180px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #E63946, #F4A300);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        /* FOOTER */
-        footer {
-            background: #1A1A1A;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- HERO -->
-    <div class="hero">
-        <h1>Little Nyonya Kitchen</h1>
-        <p>Authentic Malaysian flavours with a vibrant street‑food twist.</p>
-        <button>Explore Menu</button>
-    </div>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">Little Nyonya Kitchen</div>
+    <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-    <!-- MENU -->
-    <h2>Our Menu</h2>
-    <div class="menu">
-        <div class="menu-item">
+<!-- HERO SECTION -->
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <h1 class="glow-title">Where Malaysian Flavour Meets Fiery Soul</h1>
+        <p class="hero-text">
+            A vibrant celebration of Malaysian cuisine — bold spices, rich heritage, and flavours that ignite the senses. 
+            Step into a world where every dish tells a story, every aroma sparks nostalgia, and every bite feels like home.
+        </p>
+        <div class="hero-buttons">
+            <a href="#menu" class="btn spicy-btn">Explore Menu</a>
+            <a href="#contact" class="btn neon-btn">Order Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- SIGNATURE DISHES -->
+<section id="signature" class="signature">
+    <h2 class="section-title">🔥 Signature Dishes</h2>
+    <div class="dish-grid">
+
+        <div class="dish-card">
+            <img src="images/laksa.jpg" alt="Laksa">
+            <h3>Laksa Lemak</h3>
+            <p>A creamy, spicy coconut broth infused with lemongrass, chilli, and fresh herbs.</p>
+            <span class="badge spicy">🔥 Spicy Favourite</span>
+        </div>
+
+        <div class="dish-card">
+            <img src="images/rendang.jpg" alt="Rendang">
+            <h3>Beef Rendang</h3>
+            <p>Slow-cooked beef in a rich, aromatic blend of spices, coconut, and toasted chilli.</p>
+            <span class="badge rich">✨ Rich & Aromatic</span>
+        </div>
+
+        <div class="dish-card">
+            <img src="images/nasi-lemak.jpg" alt="Nasi Lemak">
             <h3>Nasi Lemak</h3>
-            <p>Fragrant coconut rice with sambal, peanuts, egg & crispy anchovies.</p>
+            <p>Fragrant coconut rice served with sambal, crispy anchovies, peanuts, and egg.</p>
+            <span class="badge classic">🌺 Malaysian Classic</span>
         </div>
 
-        <div class="menu-item">
-            <h3>Char Kway Teow</h3>
-            <p>Wok‑fried flat noodles with prawns, egg & smoky flavour.</p>
-        </div>
+    </div>
+</section>
 
-        <div class="menu-item">
-            <h3>Chicken Curry</h3>
-            <p>Rich, creamy, turmeric‑spiced curry with tender chicken.</p>
-        </div>
+<!-- MENU SECTION -->
+<section id="menu" class="menu">
+    <h2 class="section-title">🌶️ Our Vibrant Menu</h2>
 
-        <div class="menu-item">
-            <h3>Roti Canai</h3>
-            <p>Flaky Malaysian flatbread served with curry dip.</p>
-        </div>
+    <div class="menu-category">
+        <h3 class="category-title red-glow">Sambal Specials</h3>
+        <ul>
+            <li><strong>Sambal Prawns</strong> — Fiery prawns tossed in a bold chilli-garlic sambal.</li>
+            <li><strong>Sambal Eggplant</strong> — Soft eggplant coated in spicy, tangy sambal.</li>
+            <li><strong>Sambal Sotong</strong> — Tender squid cooked in a rich, spicy sauce.</li>
+        </ul>
     </div>
 
-    <!-- GALLERY -->
-    <h2>Gallery</h2>
-    <div class="gallery">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="menu-category">
+        <h3 class="category-title blue-glow">Nyonya Classics</h3>
+        <ul>
+            <li><strong>Ayam Pongteh</strong> — A sweet, savoury stew with potatoes and mushrooms.</li>
+            <li><strong>Nyonya Curry Chicken</strong> — Creamy curry with fragrant spices.</li>
+            <li><strong>Otak-Otak</strong> — Spiced fish wrapped in banana leaf.</li>
+        </ul>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Little Nyonya Kitchen — Designed by Viraj
-    </footer>
+    <div class="menu-category">
+        <h3 class="category-title yellow-glow">Street Food Favourites</h3>
+        <ul>
+            <li><strong>Char Kway Teow</strong> — Smoky stir-fried noodles with prawns and egg.</li>
+            <li><strong>Satay Skewers</strong> — Grilled chicken served with peanut sauce.</li>
+            <li><strong>Roti Canai</strong> — Flaky flatbread with dhal curry.</li>
+        </ul>
+    </div>
 
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about">
+    <h2 class="section-title">🌺 Our Story</h2>
+    <p>
+        Little Nyonya Kitchen is a celebration of Malaysian heritage — a fusion of Peranakan culture, 
+        vibrant spices, and heartfelt cooking. Every dish is crafted with tradition, passion, and a touch of fiery soul.
+    </p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact">
+    <h2 class="section-title">📞 Contact Us</h2>
+    <p>📍 123 Spice Street, Melbourne</p>
+    <p>📞 0400 000 000</p>
+    <p>⏰ Open Daily: 10am – 10pm</p>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
