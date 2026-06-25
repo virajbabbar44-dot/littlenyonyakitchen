@@ -1,1059 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Little Nyonya Kitchen | Malaysian Cuisines</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Little Nyonya Kitchen – cosy Malaysian cuisines, homestyle flavours, and warm hospitality." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #fdf7f1;
-      --bg-alt: #f5eee6;
-      --primary: #145c5c;
-      --accent: #f2a65a;
-      --accent-deep: #c96b2c;
-      --text: #2f2f2f;
-      --muted: #777777;
-      --card: #ffffff;
-      --border-soft: #ead9c7;
-      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.06);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --max-width: 1100px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Layout */
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(253, 247, 241, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(234, 217, 199, 0.7);
-    }
-
-    .nav {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffe7c4, #f2a65a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #4a2b16;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-    }
-
-    .nav-title {
-      font-family: "Playfair Display", serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      letter-spacing: 0.03em;
-      color: var(--primary);
-    }
-
-    .nav-sub {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 0.1rem;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.15rem;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      box-shadow: 0 8px 18px rgba(20, 92, 92, 0.25);
-      border: none;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(20, 92, 92, 0.3);
-      background: #0f4a4a;
-    }
-
-    /* Hero */
-
-    .hero {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2.8rem 1.5rem 2.4rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2.4rem;
-      align-items: center;
-    }
-
-    .hero-text-eyebrow {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-deep);
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-title {
-      font-family: "Playfair Display", serif;
-      font-size: 2.4rem;
-      line-height: 1.15;
-      color: #2b3a38;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-highlight {
-      color: var(--accent-deep);
-    }
-
-    .hero-tagline {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .badge {
-      font-size: 0.75rem;
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(242, 166, 90, 0.12);
-      color: var(--accent-deep);
-      border: 1px solid rgba(242, 166, 90, 0.4);
-    }
-
-    .badge-soft {
-      background: rgba(20, 92, 92, 0.06);
-      color: var(--primary);
-      border-color: rgba(20, 92, 92, 0.25);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .btn-primary {
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #3b2414;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(201, 107, 44, 0.35);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(201, 107, 44, 0.4);
-      background: #e28c3c;
-    }
-
-    .btn-ghost {
-      padding: 0.7rem 1.2rem;
-      border-radius: 999px;
-      border: 1px solid rgba(20, 92, 92, 0.35);
-      background: transparent;
-      color: var(--primary);
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(20, 92, 92, 0.06);
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-media {
-      position: relative;
-    }
-
-    .hero-card {
-      background: var(--card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 1.2rem;
-      display: grid;
-      gap: 0.9rem;
-      border: 1px solid var(--border-soft);
-    }
-
-    .hero-photo {
-      border-radius: var(--radius-md);
-      height: 210px;
-      background: radial-gradient(circle at 20% 0%, #ffe7c4, #f2a65a 40%, #145c5c 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo::after {
-      content: "Nyonya flavours, homestyle warmth.";
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-      font-size: 0.8rem;
-      color: #fff7eb;
-      max-width: 70%;
-    }
-
-    .hero-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-meta strong {
-      color: var(--primary);
-      font-size: 0.9rem;
-    }
-
-    .pill {
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(20, 92, 92, 0.06);
-      color: var(--primary);
-      font-size: 0.75rem;
-    }
-
-    .hero-floating {
-      position: absolute;
-      right: -0.4rem;
-      bottom: -0.4rem;
-      background: #fff;
-      border-radius: var(--radius-md);
-      padding: 0.7rem 0.9rem;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
-      border: 1px solid var(--border-soft);
-      font-size: 0.75rem;
-      max-width: 210px;
-    }
-
-    .hero-floating strong {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--accent-deep);
-      margin-bottom: 0.2rem;
-    }
-
-    /* Sections */
-
-    main {
-      flex: 1;
-    }
-
-    section {
-      padding: 2.4rem 1.5rem;
-    }
-
-    .section-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .section-header {
-      margin-bottom: 1.6rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-deep);
-      margin-bottom: 0.4rem;
-    }
-
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
-      color: #2b3a38;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-
-    .about-story p {
-      font-size: 0.9rem;
-      margin-bottom: 0.8rem;
-      color: var(--text);
-    }
-
-    .about-highlights {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .highlight-card {
-      background: var(--card);
-      border-radius: var(--radius-md);
-      padding: 0.9rem 1rem;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-      font-size: 0.85rem;
-    }
-
-    .highlight-card strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: var(--primary);
-    }
-
-    /* Menu */
-
-    .menu-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 2rem;
-    }
-
-    .menu-columns {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    .menu-column {
-      background: var(--card);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.1rem;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .menu-column h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-      color: var(--primary);
-    }
-
-    .menu-column p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.7rem;
-    }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.8rem;
-      margin-bottom: 0.6rem;
-      font-size: 0.85rem;
-    }
-
-    .menu-item-main {
-      font-weight: 500;
-    }
-
-    .menu-item-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .menu-price {
-      white-space: nowrap;
-      font-weight: 600;
-      color: var(--accent-deep);
-    }
-
-    .menu-tags {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
-
-    .menu-feature-card {
-      background: var(--bg-alt);
-      border-radius: var(--radius-lg);
-      padding: 1.3rem 1.4rem;
-      border: 1px dashed rgba(20, 92, 92, 0.35);
-      display: grid;
-      gap: 0.7rem;
-      font-size: 0.85rem;
-    }
-
-    .menu-feature-card strong {
-      color: var(--primary);
-    }
-
-    .menu-feature-list {
-      display: grid;
-      gap: 0.35rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* Gallery */
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .gallery-card {
-      border-radius: var(--radius-md);
-      background: var(--card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-      overflow: hidden;
-      font-size: 0.8rem;
-    }
-
-    .gallery-photo {
-      height: 140px;
-      background: radial-gradient(circle at 10% 0%, #ffe7c4, #f2a65a 40%, #145c5c 100%);
-    }
-
-    .gallery-body {
-      padding: 0.7rem 0.8rem 0.8rem;
-      color: var(--muted);
-    }
-
-    /* Visit & Contact */
-
-    .visit-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 2rem;
-    }
-
-    .visit-card,
-    .contact-card {
-      background: var(--card);
-      border-radius: var(--radius-md);
-      padding: 1.1rem 1.2rem;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-      font-size: 0.85rem;
-    }
-
-    .visit-card h3,
-    .contact-card h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-      color: var(--primary);
-    }
-
-    .visit-hours {
-      margin-top: 0.6rem;
-      display: grid;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .map-placeholder {
-      margin-top: 0.8rem;
-      border-radius: var(--radius-md);
-      height: 160px;
-      background: linear-gradient(135deg, #145c5c, #f2a65a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff7eb;
-      font-size: 0.85rem;
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-      color: var(--text);
-      margin-bottom: 0.8rem;
-    }
-
-    .contact-list span {
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .btn-outline {
-      padding: 0.6rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(201, 107, 44, 0.6);
-      background: transparent;
-      color: var(--accent-deep);
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    .btn-outline:hover {
-      background: rgba(201, 107, 44, 0.08);
-    }
-
-    /* Footer */
-
-    footer {
-      border-top: 1px solid rgba(234, 217, 199, 0.7);
-      background: #f6eee5;
-      padding: 1.4rem 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .footer-brand span {
-      font-weight: 500;
-      color: var(--primary);
-    }
-
-    /* Responsive */
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-media {
-        order: -1;
-      }
-
-      .about-grid,
-      .menu-layout,
-      .visit-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 2rem;
-      }
-
-      .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      section {
-        padding: 2rem 1.1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header>
-      <nav class="nav">
-        <div class="nav-brand">
-          <div class="brand-mark">N</div>
-          <div>
-            <div class="nav-title">Little Nyonya Kitchen</div>
-            <div class="nav-sub">Malaysian Cuisines</div>
-          </div>
-        </div>
-        <div class="nav-links">
-          <a href="#about">Story</a>
-          <a href="#menu">Menu</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#visit">Visit</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          Book a table
-        </button>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Hero -->
-      <section id="home">
-        <div class="hero">
-          <div>
-            <div class="hero-text-eyebrow">Cosy Malaysian, homestyle flavours</div>
-            <h1 class="hero-title">
-              A little kitchen with <span class="hero-highlight">big Nyonya heart</span>.
-            </h1>
-            <p class="hero-tagline">
-              Little Nyonya Kitchen brings the warmth of Malaysian home cooking—rich curries, fragrant rice, and
-              street‑style favourites—into a cosy dining room where everyone feels like family.
-            </p>
-            <div class="hero-badges">
-              <span class="badge">Nyonya‑inspired recipes</span>
-              <span class="badge badge-soft">Family‑run & welcoming</span>
-              <span class="badge">Laksa, rendang & roti</span>
-            </div>
-            <div class="hero-actions">
-              <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-                View our signature menu
-              </button>
-              <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-                Read our story
-              </button>
-            </div>
-            <p class="hero-note">
-              Perfect for family dinners, cosy date nights, and sharing plates with friends.
-            </p>
-          </div>
-          <div class="hero-media">
-            <div class="hero-card">
-              <div class="hero-photo"></div>
-              <div class="hero-meta">
-                <div>
-                  <strong>Signature dishes</strong><br />
-                  Nyonya curry, char kway teow, sambal prawns, roti canai & more.
-                </div>
-                <div class="pill">Comfort food, Malaysian soul.</div>
-              </div>
-            </div>
-            <div class="hero-floating">
-              <strong>“Feels like eating in someone’s home.”</strong>
-              Guests love the cosy atmosphere, generous portions, and the way each dish tastes like a recipe passed
-              down through generations.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-eyebrow">Our story</div>
-            <h2 class="section-title">Little kitchen, big memories.</h2>
-            <p class="section-subtitle">
-              Inspired by Nyonya heritage and Malaysian family tables, Little Nyonya Kitchen is all about slow‑cooked
-              flavours, shared plates, and the feeling of being looked after.
-            </p>
-          </div>
-          <div class="about-grid">
-            <div class="about-story">
-              <p>
-                In Malaysian homes, the kitchen is where everything happens—stories, laughter, and the kind of food
-                that makes you stay a little longer at the table. Little Nyonya Kitchen brings that feeling into a cosy
-                dining room, with recipes that blend Chinese, Malay and Nyonya influences.
-              </p>
-              <p>
-                From fragrant coconut rice and rich rendang to wok‑fried noodles and sambal‑kissed seafood, each dish
-                is cooked with care, layered with spice, and served with the warmth of true hospitality.
-              </p>
-              <p>
-                Whether you’re discovering Malaysian flavours for the first time or coming in for a taste of home, this
-                is a place to slow down, share plates, and enjoy food that’s made to be remembered.
-              </p>
-            </div>
-            <div class="about-highlights">
-              <div class="highlight-card">
-                <strong>Cosy, welcoming atmosphere</strong>
-                Soft lighting, warm colours and friendly service make the space feel like a living room, not a
-                restaurant.
-              </div>
-              <div class="highlight-card">
-                <strong>Homestyle Malaysian favourites</strong>
-                Think laksa, nasi lemak, char kway teow, rendang and roti—comfort food with depth and character.
-              </div>
-              <div class="highlight-card">
-                <strong>Perfect for sharing</strong>
-                Designed for families and groups, with generous portions and dishes that are best enjoyed together.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Menu -->
-      <section id="menu">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-eyebrow">Menu highlights</div>
-            <h2 class="section-title">A table full of Malaysian favourites.</h2>
-            <p class="section-subtitle">
-              Here’s a taste of what you’ll find on the menu—street‑style noodles, rich curries, comforting rice dishes
-              and vibrant vegetarian options.
-            </p>
-          </div>
-          <div class="menu-layout">
-            <div class="menu-columns">
-              <div class="menu-column">
-                <h3>Noodles & wok</h3>
-                <p>Smoky, savoury and full of wok‑hei—the soul of Malaysian street food.</p>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Char Kway Teow</div>
-                    <div class="menu-item-desc">
-                      Stir‑fried flat rice noodles with prawns, fish cake, egg, chives and sambal.
-                    </div>
-                    <div class="menu-tags">Spicy option • Street‑style favourite</div>
-                  </div>
-                  <div class="menu-price">$22.90</div>
-                </div>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Mee Goreng Mamak</div>
-                    <div class="menu-item-desc">
-                      Wok‑fried yellow noodles with tofu, vegetables, egg and a rich, sweet‑spicy sauce.
-                    </div>
-                    <div class="menu-tags">Vegetarian option available</div>
-                  </div>
-                  <div class="menu-price">$21.50</div>
-                </div>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Seafood Hokkien Mee</div>
-                    <div class="menu-item-desc">
-                      Thick noodles in a savoury broth with prawns, squid and crispy shallots.
-                    </div>
-                    <div class="menu-tags">Comforting & rich</div>
-                  </div>
-                  <div class="menu-price">$23.50</div>
-                </div>
-              </div>
-
-              <div class="menu-column">
-                <h3>Curries & rice</h3>
-                <p>Slow‑cooked, aromatic and deeply satisfying—served with fragrant rice and sides.</p>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Nyonya Chicken Curry</div>
-                    <div class="menu-item-desc">
-                      Coconut‑based curry with tender chicken, potatoes and a balanced spice blend.
-                    </div>
-                    <div class="menu-tags">Mild‑medium • Gluten‑free</div>
-                  </div>
-                  <div class="menu-price">$24.90</div>
-                </div>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Beef Rendang</div>
-                    <div class="menu-item-desc">
-                      Slow‑braised beef in a dry coconut curry, rich with lemongrass and galangal.
-                    </div>
-                    <div class="menu-tags">Signature dish • Deep flavour</div>
-                  </div>
-                  <div class="menu-price">$26.50</div>
-                </div>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Nasi Lemak</div>
-                    <div class="menu-item-desc">
-                      Coconut rice with sambal, crispy anchovies, peanuts, egg and your choice of protein.
-                    </div>
-                    <div class="menu-tags">Classic Malaysian • Customisable</div>
-                  </div>
-                  <div class="menu-price">$23.90</div>
-                </div>
-              </div>
-
-              <div class="menu-column">
-                <h3>Small plates & vegetarian</h3>
-                <p>Perfect for sharing or building your own feast.</p>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Roti Canai with Curry</div>
-                    <div class="menu-item-desc">
-                      Flaky, buttery flatbread served with a side of curry for dipping.
-                    </div>
-                    <div class="menu-tags">Great starter • Crowd favourite</div>
-                  </div>
-                  <div class="menu-price">$14.90</div>
-                </div>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Sambal Eggplant</div>
-                    <div class="menu-item-desc">
-                      Wok‑fried eggplant in a spicy sambal sauce, finished with fresh herbs.
-                    </div>
-                    <div class="menu-tags">Vegetarian • Can be made vegan</div>
-                  </div>
-                  <div class="menu-price">$19.50</div>
-                </div>
-
-                <div class="menu-item">
-                  <div>
-                    <div class="menu-item-main">Crispy Tofu Bites</div>
-                    <div class="menu-item-desc">
-                      Lightly fried tofu with chilli‑lime dressing and crushed peanuts.
-                    </div>
-                    <div class="menu-tags">Gluten‑free • Light & fresh</div>
-                  </div>
-                  <div class="menu-price">$17.90</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-feature-card">
-              <strong>Full menu, daily specials & dietary options.</strong>
-              <div class="menu-feature-list">
-                <div>• Full à la carte menu including seafood, vegetarian and kids’ options.</div>
-                <div>• Ask our team about vegan, gluten‑free and low‑spice variations.</div>
-                <div>• Weekly specials inspired by Nyonya home cooking and regional Malaysian dishes.</div>
-                <div>• Perfect for sharing—build your own spread of noodles, curries and small plates.</div>
-              </div>
-              <p style="margin-top:0.6rem;">
-                For the complete menu, including desserts and drinks, please speak to our team in‑store or check the
-                printed menu at your table.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gallery -->
-      <section id="gallery">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-eyebrow">Atmosphere</div>
-            <h2 class="section-title">Cosy corners, shared tables, warm light.</h2>
-            <p class="section-subtitle">
-              Little Nyonya Kitchen is designed to feel like a living room—soft lighting, warm colours and the gentle
-              hum of conversation.
-            </p>
-          </div>
-          <div class="gallery-grid">
-            <div class="gallery-card">
-              <div class="gallery-photo"></div>
-              <div class="gallery-body">
-                Steaming bowls of laksa, bright sambal and fragrant herbs—perfect for cold nights and comfort cravings.
-              </div>
-            </div>
-            <div class="gallery-card">
-              <div class="gallery-photo"></div>
-              <div class="gallery-body">
-                Shared plates of roti, curries and noodles, ideal for family dinners and gatherings with friends.
-              </div>
-            </div>
-            <div class="gallery-card">
-              <div class="gallery-photo"></div>
-              <div class="gallery-body">
-                A cosy dining room with warm tones, simple decor and the feeling of being welcomed in.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Visit -->
-      <section id="visit">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-eyebrow">Visit us</div>
-            <h2 class="section-title">Your neighbourhood Malaysian kitchen.</h2>
-            <p class="section-subtitle">
-              Tucked into a friendly local setting, Little Nyonya Kitchen is easy to reach and even easier to stay at
-              for “just one more dish”.
-            </p>
-          </div>
-          <div class="visit-grid">
-            <div class="visit-card">
-              <h3>Location & parking</h3>
-              <p>
-                Little Nyonya Kitchen is located in a cosy neighbourhood setting, with easy parking and a relaxed,
-                family‑friendly atmosphere.
-              </p>
-              <div class="visit-hours">
-                <strong>Opening hours</strong>
-                <span>Wednesday – Sunday: 5:00pm – 9:30pm</span>
-                <span>Closed Monday & Tuesday</span>
-              </div>
-              <div class="map-placeholder">
-                Map placeholder – embed Google Maps here once the exact address is confirmed.
-              </div>
-            </div>
-            <div class="contact-card" id="contact">
-              <h3>Bookings & contact</h3>
-              <div class="contact-list">
-                <div>
-                  <strong>Phone</strong><br />
-                  <span>Call to book your table and ask about today’s specials.</span><br />
-                  +61 4XX XXX XXX
-                </div>
-                <div>
-                  <strong>Email</strong><br />
-                  <span>For group bookings, events and special requests.</span><br />
-                  hello@littlenyonyakitchen.com
-                </div>
-                <div>
-                  <strong>Social</strong><br />
-                  <span>Follow for new dishes, behind‑the‑scenes and special nights.</span><br />
-                  @littlenyonyakitchen
-                </div>
-              </div>
-              <div class="contact-actions">
-                <button class="btn-primary">Call to book</button>
-                <button class="btn-outline">Message us on social</button>
-              </div>
-              <p style="margin-top:0.7rem;font-size:0.8rem;color:var(--muted);">
-                For large groups or special occasions, we recommend booking ahead so we can prepare the perfect spread
-                for your table.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="brand-mark">N</div>
-          <span>Little Nyonya Kitchen – Malaysian Cuisines</span>
-        </div>
-        <div>Designed to feel like home, one plate at a time.</div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Smooth scroll for nav links (fallback for older browsers)
-    document.querySelectorAll('.nav-links a').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Nyonya Kitchen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #FFF7E8; /* Coconut cream */
+            color: #1A1A1A; /* Charcoal */
         }
-      });
-    });
-  </script>
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #8B0000, #E63946, #F4A300);
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+
+        .hero button {
+            margin-top: 25px;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #E63946, #F4A300);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* SECTION HEADERS */
+        h2 {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 2.2rem;
+            color: #E63946;
+        }
+
+        /* MENU SECTION */
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 6px solid #E63946;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            color: #E63946;
+        }
+
+        .menu-item p {
+            margin-top: 8px;
+            color: #333;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .gallery div {
+            height: 180px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #E63946, #F4A300);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1A1A1A;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Little Nyonya Kitchen</h1>
+        <p>Authentic Malaysian flavours with a vibrant street‑food twist.</p>
+        <button>Explore Menu</button>
+    </div>
+
+    <!-- MENU -->
+    <h2>Our Menu</h2>
+    <div class="menu">
+        <div class="menu-item">
+            <h3>Nasi Lemak</h3>
+            <p>Fragrant coconut rice with sambal, peanuts, egg & crispy anchovies.</p>
+        </div>
+
+        <div class="menu-item">
+            <h3>Char Kway Teow</h3>
+            <p>Wok‑fried flat noodles with prawns, egg & smoky flavour.</p>
+        </div>
+
+        <div class="menu-item">
+            <h3>Chicken Curry</h3>
+            <p>Rich, creamy, turmeric‑spiced curry with tender chicken.</p>
+        </div>
+
+        <div class="menu-item">
+            <h3>Roti Canai</h3>
+            <p>Flaky Malaysian flatbread served with curry dip.</p>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Little Nyonya Kitchen — Designed by Viraj
+    </footer>
+
 </body>
 </html>
